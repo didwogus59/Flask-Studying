@@ -3,13 +3,11 @@ import random
 def create_app():
     app = Flask(__name__)
 
-    from .views import main_pages, test_pages
+    from .views import main_pages
+    from .test import get_test, post_test
     app.register_blueprint(main_pages.main)
-    app.register_blueprint(test_pages.test)
-  
-    @app.route('/var/<id>')
-    def var_test(id):
-        return "test var" + id
+    app.register_blueprint(get_test.get_test)
+    app.register_blueprint(post_test.post_test)
     
     return app
 #app.run(port = 8000, debug = False)
