@@ -4,7 +4,7 @@ main = Blueprint('main',__name__,url_prefix='/')
 
 @main.route('/')
 def main_page():
-    return "main page"
+    return render_template('main.html')
 
 @main.errorhandler(404)
 def page_not_found(error):

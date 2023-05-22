@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>studing db</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <form action = {{ url_for("mongo.insert_page") }} method = "POST">
+        <p>데이터 : <input type="text" name = "data" value = "default"></p>
+        <p>내용 : <input type="text" name = "content"> </p>
+        <input type="submit">
+    </form>
+
+    <form method = "post">
+        <p>데이터 : <input type="text" name = "data" value = "default"></p>
+        <p>내용 : <input type="text" name = "content"> </p>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</body>
+
+</html>

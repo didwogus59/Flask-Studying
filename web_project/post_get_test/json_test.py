@@ -6,6 +6,7 @@ json_test1 = Blueprint("json_test1",__name__,url_prefix= '/test')
 def test_form():
     if(request.is_json) :
         data = request.get_json()
-        return data
+        ans = "data send success " + data['data'] + " and " + data['password'] 
+        return ans
     else :
         return "not json"

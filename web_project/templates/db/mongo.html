@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>MongoDB connect</h1>
+    <div>
+        <p>data list</p>
+        <p>------------------------------------</p>
+        {% if data %}
+            {% for i in data %}
+                <p><li><a href = "{{url_for('mongo.data_detail', id = i._id)}}">{{i.name}}</p></a>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <a href="{{ url_for('mongo.insert_page') }}" class="btn btn-primary">data insert</a><br>
+    <a href="{{ url_for('main.main_page') }}" class="btn btn-primary">home page</a><br>
+</body>
+</html>

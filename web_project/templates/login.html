@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>studing db</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+         <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    <form action = "http://127.0.0.1:5000/login/test2" method = "post">
+        <p>id : <input type="text" name = "id" value = "default"></p>
+        <p>password : <input type="password" name = "pwd"> </p>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
