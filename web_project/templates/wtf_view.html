@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ data.name }}</h1>
+<div>
+    {{ data.content }}
+</div>
+<a href="{{url_for('form_tests.send')}}" class = "btn btn-primary">wtf test page</a>
+{% endblock %}

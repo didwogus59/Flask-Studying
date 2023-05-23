@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_socketio import SocketIO
 import os
-
+from flask_wtf import CSRFProtect
 socketio1 = SocketIO()
 
 def create_app():
@@ -9,6 +9,9 @@ def create_app():
     app.debug = True
     app.secret_key = os.urandom(24)
     socketio1.init_app(app)
+
+    csrf = CSRFProtect()
+    csrf.init_app(app)
 
     from .views import main_pages, chat_client
     app.register_blueprint(main_pages.main)
@@ -26,8 +29,14 @@ def create_app():
     from .db_test import mongodb, login
     app.register_blueprint(mongodb.mongo)
     app.register_blueprint(login.login)
+    
+    from .flask_wtf_test import form_view
+    app.register_blueprint(form_view.form_testing)
+    
+
     return app
 
+    
 if __name__ == '__main__':
     app = create_app()
     app.run()

@@ -1,7 +1,9 @@
-<!doctype html>
+{% extends 'base.html' %}
+{% block content %}
 <title>Hello from Flask</title>
 {% if var %}
   <h1>Hello {{ var }}!</h1>
 {% else %}
   <h1>Hello, World!</h1>
 {% endif %}
+{% endblock %}
