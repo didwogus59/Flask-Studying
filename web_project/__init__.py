@@ -1,15 +1,16 @@
 from flask import Flask
 from flask_socketio import SocketIO
 import os
-from flask_wtf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 socketio1 = SocketIO()
 
 def create_app():
     app = Flask(__name__, template_folder= "templates")
-    app.debug = True
-    app.secret_key = os.urandom(24)
+    app.config.update(
+    DEBUG=True,
+    SECRET_KEY="secret_sauce",
+    )
     socketio1.init_app(app)
-
     csrf = CSRFProtect()
     csrf.init_app(app)
 
@@ -33,7 +34,8 @@ def create_app():
     from .flask_wtf_test import form_view
     app.register_blueprint(form_view.form_testing)
     
-
+    from .login_test import login, sign
+    app.register_blueprint(login.user_login)
     return app
 
     
