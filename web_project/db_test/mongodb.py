@@ -4,12 +4,13 @@ import pymongo
 from flask import Blueprint, render_template, request, url_for
 from werkzeug.utils import redirect
 from bson.objectid import ObjectId
+from .form import mongo_form
 mongo = Blueprint('mongo',__name__,url_prefix='/mongo')
 
 uri = "mongodb://localhost:27017"
 client = MongoClient(host = 'localhost', port = 27017, connect = True)
 db = client.account#db 이름
-coll = db.id#db의 collection 이름 테이블 같은 거
+coll = db.test#db의 collection 이름 테이블 같은 거
         
 @mongo.route('/test',methods = ['GET','POST',])
 def db_see():
@@ -27,7 +28,8 @@ def insert_page():
         document = {"name" : data, "content" : content}
         coll.insert_one(document)
         return redirect(url_for('mongo.db_see'))
-    return render_template('db/db_insert.html')
+    form = mongo_form()
+    return render_template('db/db_insert.html', form = form)
 
 @mongo.route('/test3/<id>')
 def data_detail(id):
