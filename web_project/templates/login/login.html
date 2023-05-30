@@ -26,6 +26,8 @@
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     </form>
 </div>
-{{ csrf_token() }}
+{{ csrf_token() }}<br>
+
+<a href="{{ url_for('main.main_page') }}" class="btn btn-primary">home page</a><br>
 {% endblock %}
 

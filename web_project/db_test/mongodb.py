@@ -36,8 +36,9 @@ def data_detail(id):
     data = coll.find_one({"_id":ObjectId(id)})#_id is objectid라는 타입이라 그냥 문자열로 찾으면 안 찾아진다
     return render_template('db/detail.html',data = data)
 
-@mongo.route('/test4')
-def data_delete():
+@mongo.route('/test4/<id>')
+def data_delete(id):
+    coll.delete_one({"_id":ObjectId(id)})
     return redirect(url_for('mongo.db_see'))
 
 

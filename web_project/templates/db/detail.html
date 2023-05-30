@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ data.id }}</h1>
+<h1>{{ data.name }}</h1>
 <div>
     {{ data.content }}
 </div>
+<div>
+    {{ data._id }}
+</div>
+<a href="{{url_for('mongo.data_delete', id = data._id)}}">data delete</a><br>
+<a href="{{url_for('mongo.db_see')}}" class = "btn btn-primary">data list</a>
 {% endblock %}

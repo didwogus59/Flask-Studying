@@ -2,15 +2,14 @@
 {% block content %}
 <form action = {{ url_for("form_tests.view") }} method = "POST">
     {{ form.csrf_token }}
-    {{form.name.label}}
-    {{form.name(class = "form-control")}}
+    <p>{{form.name.label}} : {{form.name(class = "form-control")}}</p>
 
-    {{form.content.label}}
-    {{form.content(class = "form-control")}}
+    <p>{{form.content.label}} : {{form.content(class = "form-control")}} </p>
     <input type="submit">
 </form>
 <br>
 <form action = {{ url_for("form_tests.view") }} method = "POST">
+    {{ form.csrf_token }}
     {{form.name.label}}
     {{form.name()}}
 
