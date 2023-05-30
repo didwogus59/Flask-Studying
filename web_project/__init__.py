@@ -7,9 +7,9 @@ socketio1 = SocketIO()
 def create_app():
     app = Flask(__name__, template_folder= "templates")
     app.config.update(
-    DEBUG=True,
-    SECRET_KEY="secret_sauce",
+    DEBUG=True
     )
+    app.config.from_pyfile('../config.py')
     socketio1.init_app(app)
     csrf = CSRFProtect()
     csrf.init_app(app)
@@ -27,9 +27,8 @@ def create_app():
     from .test import argument
     app.register_blueprint(argument.send_var)
 
-    from .db_test import mongodb, login
+    from .db_test import mongodb
     app.register_blueprint(mongodb.mongo)
-    app.register_blueprint(login.login)
     
     from .flask_wtf_test import form_view
     app.register_blueprint(form_view.form_testing)

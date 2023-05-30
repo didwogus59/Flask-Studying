@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+         <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+{% endwith %}
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">로그인</h5> 
     <form method="post">
@@ -17,5 +26,6 @@
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     </form>
 </div>
+{{ csrf_token() }}
 {% endblock %}
 
