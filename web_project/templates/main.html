@@ -2,6 +2,7 @@
 {% block content %}
 {% if g.user %}
     {{ g.user.name }}<br>
+    <a href="{{ url_for('main.logout') }}" class="btn btn-primary">logout</a><br>
 {% endif %}
 <a href="{{ url_for('mongo.db_see') }}" class="btn btn-primary">db test</a><br>
 <a href="{{ url_for('mongo.insert_page') }}" class="btn btn-primary">db insert data</a><br>

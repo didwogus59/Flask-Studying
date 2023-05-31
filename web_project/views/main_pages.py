@@ -18,11 +18,6 @@ def main_page():
 def page_not_found(error):
     return render_template('page_not_found.html'), 404
 
-@main.route('/login')
-def login():
-    return "login page"
-
-
 @main.before_app_request
 def load_logged_in_user():
     user_id = session.get('name')
@@ -35,4 +30,4 @@ def load_logged_in_user():
 @main.route('/logout/')
 def logout():
     session.clear()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.main_page'))
