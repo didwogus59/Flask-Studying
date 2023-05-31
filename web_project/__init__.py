@@ -14,9 +14,9 @@ def create_app():
     csrf = CSRFProtect()
     csrf.init_app(app)
 
-    from .views import main_pages, chat_client
+    from .views import main_pages
     app.register_blueprint(main_pages.main)
-    app.register_blueprint(chat_client.chat_client1)
+
     
     from .post_get_test import form_test, get_test, json_test, post_test
     app.register_blueprint(get_test.get_test)
@@ -35,6 +35,7 @@ def create_app():
     
     from .login_test import login, sign
     app.register_blueprint(login.user_login)
+    app.register_blueprint(sign.sign)
     return app
 
     

@@ -19,7 +19,7 @@ class user_create(FlaskForm):
         validators.EqualTo('password_confirm',message= 'passwords must be matched'),
     ])
     password_confirm = PasswordField('Repeat Password')
-    check = BooleanField('i checked', [validators.input_required()])
+    #check = BooleanField('i checked', [validators.input_required()])
 
 
 class login_form(FlaskForm):

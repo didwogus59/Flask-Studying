@@ -13,17 +13,17 @@ db = client.account#db 이름
 coll = db.id#db의 collection 이름 테이블 같은 거
 
 @sign.route('/signup/', methods=('GET', 'POST'))
-def signup():
+def sign_up():
     form = user_create()
     if request.method == 'POST' and form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = coll.find_one({'name':(form.name.data)})
         if not user:
-            user = User(username=form.username.data,
-                        password=generate_password_hash(form.password1.data),
-                        email=form.email.data)
-            db.session.add(user)
-            db.session.commit()
-            return redirect(url_for('main.index'))
+            name = form.name.data
+            password = form.password.data
+            email = form.email.data
+            document = {"name":name, "password": generate_password_hash(password), "email" : email}
+            coll.insert_one(document)
+            return redirect(url_for('user_login.login_test'))
         else:
-            flash('이미 존재하는 사용자입니다.')
-    return render_template('auth/signup.html', form=form)
+            flash('name duplication')
+    return render_template('login/sign_up.html', form=form)

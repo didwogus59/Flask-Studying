@@ -15,13 +15,11 @@ def login_test():
             flash("id incorrect")
             return render_template('login/login.html', form=form)
         else:
-            hash = generate_password_hash(user['content'])
-            if not check_password_hash(hash, form.password.data):
+            if not check_password_hash(user["password"], form.password.data):
                 flash("password incorrect")
                 return render_template('login/login.html', form=form)
             else:
                 session.clear()
-                session['user_id'] = user['name']
+                session['name'] = str(user['_id'])
                 return redirect(url_for('main.main_page'))
     return render_template('login/login.html', form=form)
-#{{ form.csrf_token }} {% include "form_errors.html" %}#

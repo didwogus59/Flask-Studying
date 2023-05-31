@@ -12,6 +12,7 @@
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">로그인</h5> 
     <form method="post">
+        {{ form.csrf_token }}
         <div class="mb-3">
             <label for="username">사용자 이름</label>
             <input type="text" class="form-control" name="name" id="name"
@@ -23,10 +24,8 @@
                    value="{{ form.password.data or '' }}">
         </div>
         <button type="submit" class="btn btn-primary">로그인</button>
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     </form>
 </div>
-{{ csrf_token() }}<br>
 
 <a href="{{ url_for('main.main_page') }}" class="btn btn-primary">home page</a><br>
 {% endblock %}

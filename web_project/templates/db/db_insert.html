@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <form action = {{ url_for("mongo.insert_page") }} method = "POST">
-    {{ form.csrf_token }}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     <p>데이터 : <input type="text" name = "data" value = "default"></p>
     <p>내용 : <input type="text" name = "content"> </p>
     <input type="submit">
