@@ -36,6 +36,9 @@ def create_app():
     from .login_test import login, sign
     app.register_blueprint(login.user_login)
     app.register_blueprint(sign.sign)
+
+    from .board_test import board
+    app.register_blueprint(board.board)
     return app
 
     

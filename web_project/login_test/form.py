@@ -12,7 +12,7 @@ db = client.account#db 이름
 coll = db.id#db의 collection 이름 테이블 같은 거
 
 class user_create(FlaskForm):
-    name = StringField("아이디",[validators.length(min = 1, max = 6)])
+    name = StringField("아이디",[validators.length(min = 1, max = 13)])
     email = EmailField("이메일", validators=[DataRequired(), Email()])
     password = PasswordField("비밀번호",[
         validators.DataRequired(),

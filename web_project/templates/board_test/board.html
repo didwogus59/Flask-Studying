@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Board connect</h1>
+    <div>
+        <p>data list</p>
+        <p>------------------------------------</p>
+        {% if data %}
+            {% for i in data %}
+                <p><li><a href = "{{url_for('board.post_detail', id = i._id)}}">{{i.title}}</p></a>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <a href="{{ url_for('board.post_insert') }}" class="btn btn-primary">post</a><br>
+    <a href="{{ url_for('main.main_page') }}" class="btn btn-primary">home page</a><br>
+{% endblock %}

@@ -1,7 +1,7 @@
 from flask import Blueprint, url_for, render_template, flash, request
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import redirect
-from .user import user_create
+from .form import user_create
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import pymongo

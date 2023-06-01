@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action = {{ url_for("board.post_insert") }} method = "POST">
+    {{ form.csrf_token }}
+    {% include "form_errors.html" %}
+    <div class="mb-3">
+        <p>title : {{form.title(class = "form-control")}}</p>
+    </div>
+    <div class="mb-3">
+        <label for="content">cotent</label>
+        <input type="text" class="form-control" name="content" id="content"
+               value="{{ form.content.data or '' }}">
+    </div>
+    <button type="submit" class="btn btn-primary">생성하기</button>
+</form>
+{% endblock %}
