@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ data.title }}</h1>
+<div>
+    {{ data.content }}
+</div>
+{% if g.user.name == data.name %}
+        <a href="{{ url_for('board.post_delete', data_id = data._id)}}" class="btn btn-primary">delete</a><br>
+{% endif %}
+<a href="{{url_for('board.db_see')}}" class = "btn btn-primary">board</a>
+{% endblock %}

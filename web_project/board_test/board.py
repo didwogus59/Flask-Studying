@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for, render_template, flash, request, session
+from flask import Blueprint, url_for, render_template, flash, request, session, g
 from bson.objectid import ObjectId
 from werkzeug.utils import redirect
 from pymongo.mongo_client import MongoClient
@@ -34,10 +34,25 @@ def post_insert():
         else:
             return render_template('board_test/post.html',form = form)
         
-@board.route('/post/detail',methods = ['POST','GET',])
-def post_detail():
-    return "1"
+@board.route('/post/detail/<id>',methods = ['POST','GET',])
+def post_detail(id):
+    data = post_board.find_one({"_id":ObjectId(id)})
+    return render_template("board_test/detail.html", data = data)
 
-@board.route('/post/delete',methods = ['POST','GET',])
-def post_delete():
-    return "1"
+@board.route('/post/delete/<data_id>',methods = ['POST','GET',])
+def post_delete(data_id):
+    user_id = session.get('name')
+    user = id.find_one({"_id":ObjectId(user_id)})
+    data = post_board.find_one({'_id':ObjectId(data_id)})
+    if(data["name"] == user["name"]):
+        post_board.delete_one({'_id':ObjectId(data_id)})
+    return redirect(url_for('board.db_see'))
+
+@board.before_app_request
+def load_logged_in_user():
+    user_id = session.get('name')
+    if user_id is None:
+        g.user = None
+    else:
+        data = id.find_one({"_id":ObjectId(user_id)})
+        g.user = data
