@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method = "POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <p>제목 : <input type="text" name = "title" value = "test title"></p>
+    <p>내용 : <input type="text" name = "content" value = "test content"> </p>
+    <input type="submit">
+</form>
+<a href="{{ url_for('main.main_page') }}" class="btn btn-primary">home page</a><br>
+{% endblock %}

@@ -23,6 +23,10 @@ def create_app():
     from .test import argument
     app.register_blueprint(argument.send_var)
 
+    from .post_get_test import form_post, json_post
+    app.register_blueprint(form_post.form_test)
+    app.register_blueprint(json_post.json_test)
+
     from .db_test import mongodb
     app.register_blueprint(mongodb.mongo)
     

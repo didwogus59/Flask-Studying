@@ -1,12 +1,15 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, url_for
+from werkzeug.utils import redirect
+json_test = Blueprint("json_test",__name__,url_prefix= '/json')
 
-json_test1 = Blueprint("json_test1",__name__,url_prefix= '/test')
-
-@json_test1.route('/json',methods=('POST','GET',))
-def test_form():
-    if(request.is_json) :
-        data = request.get_json()
-        ans = "data send success " + data['data'] + " and " + data['password'] 
-        return ans
-    else :
-        return "not json"
+@json_test.route('/test',methods=('POST','GET',))
+def test_json():
+    if request.method == "POST":
+        form = request.form
+        title = form['title']
+        content = form['content']
+        json = jsonify({'title':title, 'content':content})
+        print(json)
+        return json
+    else:
+        return render_template("post_get_test/form_get.html")
