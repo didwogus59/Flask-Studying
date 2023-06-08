@@ -1,21 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action = {{ url_for("form_tests.view") }} method = "POST">
+<form action = {{ url_for("form_tests.test") }} method = "POST">
     {{ form.csrf_token }}
     <p>{{form.name.label}} : {{form.name(class = "form-control")}}</p>
 
     <p>{{form.content.label}} : {{form.content(class = "form-control")}} </p>
     <input type="submit">
-</form>
-<br>
-<form action = {{ url_for("form_tests.view") }} method = "POST">
-    {{ form.csrf_token }}
-    {{form.name.label}}
-    {{form.name()}}
+</form><br>
 
-    {{form.content.label}}
-    {{form.content()}}
-    <input type="submit">
-</form>
 <a href="{{url_for('main.main_page')}}" class = "btn btn-primary">home page</a>
 {% endblock %}

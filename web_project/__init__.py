@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, session
 from flask_socketio import SocketIO
 import os
 from flask_wtf.csrf import CSRFProtect
+from datetime import timedelta
+
 socketio1 = SocketIO()
 
 def create_app():
@@ -13,16 +15,10 @@ def create_app():
     socketio1.init_app(app)
     csrf = CSRFProtect()
     csrf.init_app(app)
+    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
 
     from .views import main_pages
     app.register_blueprint(main_pages.main)
-
-    
-    from .post_get_test import form_test, get_test, json_test, post_test
-    app.register_blueprint(get_test.get_test)
-    app.register_blueprint(post_test.post_test)
-    app.register_blueprint(form_test.form_test)
-    app.register_blueprint(json_test.json_test1)
 
     from .test import argument
     app.register_blueprint(argument.send_var)
@@ -41,7 +37,6 @@ def create_app():
     app.register_blueprint(board.board)
     return app
 
-    
 if __name__ == '__main__':
     app = create_app()
     app.run()

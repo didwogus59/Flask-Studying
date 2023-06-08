@@ -20,6 +20,7 @@ def login_test():
                 return render_template('login/login.html', form=form)
             else:
                 session.clear()
+                session.permanent = True
                 session['name'] = str(user['_id'])
                 return redirect(url_for('main.main_page'))
     return render_template('login/login.html', form=form)

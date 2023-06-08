@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{{url_for('user_login.login_test')}}" class = "btn btn-primary">get test</a><br>
+<a href="{{url_for('sign_up.sign_up')}}" class = "btn btn-primary">form post test</a><br>
+<a href="{{url_for('board.db_see')}}" class = "btn btn-primary">json post test</a>
+
+{% endblock %}
