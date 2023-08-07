@@ -7,4 +7,4 @@ count = 0
 def chatting(var):
     global count
     count = (int(var) + count) % 10000000
-    return render_template("argument.html", var = count)
+    return render_template("test/argument.html", var = count)
