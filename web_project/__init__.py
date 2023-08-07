@@ -41,9 +41,6 @@ def create_app():
     app.register_blueprint(board.board)
     return app
 
-if __name__ == '__main__':
-    app = create_app()
-    app.run()
 
 #app.run(port = 8000, debug = False)
 
@@ -54,6 +51,6 @@ conda deactivate
 conda activate project_pybo
 $env:FLASK_APP = "web_project"
 $env:FLASK_DEBUG="true"
-flask run
- --host=0.0.0.0
+flask run 
+--host=0.0.0.0
 "'''
