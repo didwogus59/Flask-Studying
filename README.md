@@ -1,4 +1,4 @@
-# python-study1
+# Flask Studying Project
 
 
 studying 
