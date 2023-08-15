@@ -1,10 +1,8 @@
 from flask import Flask, session
-from flask_socketio import SocketIO
 import os
 from flask_wtf.csrf import CSRFProtect
 from datetime import timedelta
-
-socketio1 = SocketIO()
+from .test.socket_test import *
 
 def create_app():
     app = Flask(__name__, template_folder= "templates")
@@ -12,11 +10,13 @@ def create_app():
     DEBUG=True
     )
     app.config.from_pyfile('../config.py')
-    socketio1.init_app(app)
+    socketio.init_app(app)
     csrf = CSRFProtect()
     csrf.init_app(app)
     app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
-
+    
+    app.register_blueprint(web_socket)
+    
     from .views import main_pages
     app.register_blueprint(main_pages.main)
 
@@ -40,17 +40,3 @@ def create_app():
     from .board_test import board
     app.register_blueprint(board.board)
     return app
-
-
-#app.run(port = 8000, debug = False)
-
-#app = create_app()
-#app.run(port = 8000, debug = False)
-'''
-conda deactivate
-conda activate project_pybo
-$env:FLASK_APP = "web_project"
-$env:FLASK_DEBUG="true"
-flask run 
---host=0.0.0.0
-"'''
