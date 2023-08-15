@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, validators, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, EqualTo, Email
-from wtforms.fields.html5 import EmailField
+from wtforms.fields import EmailField
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import pymongo

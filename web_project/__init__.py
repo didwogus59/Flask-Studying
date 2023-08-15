@@ -2,18 +2,19 @@ from flask import Flask, session
 import os
 from flask_wtf.csrf import CSRFProtect
 from datetime import timedelta
-from .test.socket_test import *
-
+#from .chatting.test import *
+from .chatting.socket_test import *
 def create_app():
     app = Flask(__name__, template_folder= "templates")
     app.config.update(
-    DEBUG=True
+    DEBUG=True,
+    PORT = 6000
     )
+    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
     app.config.from_pyfile('../config.py')
     socketio.init_app(app)
     csrf = CSRFProtect()
     csrf.init_app(app)
-    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
     
     app.register_blueprint(web_socket)
     
