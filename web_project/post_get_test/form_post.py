@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-
+from ..chatting.extension import socketio
 form_test = Blueprint("form_test",__name__,url_prefix= '/form')
 
 @form_test.route('/test',methods=('POST','GET',))

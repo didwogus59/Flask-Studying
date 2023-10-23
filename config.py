@@ -5,3 +5,5 @@ import os
 SECRET_KEY="secret_sauce123123"
 
 DEBUG = True
+
+PORT = 3000

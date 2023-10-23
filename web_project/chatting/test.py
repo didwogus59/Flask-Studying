@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template
 from flask_socketio import SocketIO, send
 web_socket = Blueprint("socket",__name__,url_prefix= '/socket')
 

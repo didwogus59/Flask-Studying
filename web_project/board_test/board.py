@@ -12,7 +12,7 @@ post_board = db.board#db의 collection 이름 테이블 같은 거
 id = db.id
 board = Blueprint('board', __name__, url_prefix='/board')
 
-@board.route('/list',methods = ['GET','POST',])
+@board.route('/list',methods = ['GET',])
 def db_see():
     results = post_board.find()
     return render_template('board_test/board.html', data = results)

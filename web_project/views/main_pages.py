@@ -3,6 +3,8 @@ from bson.objectid import ObjectId
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from werkzeug.utils import redirect
+import os
+
 main = Blueprint('main',__name__,url_prefix='/')
 
 uri = "mongodb://localhost:27017"
@@ -31,4 +33,3 @@ def load_logged_in_user():
 def logout():
     session.clear()
     return redirect(url_for('main.main_page'))
-

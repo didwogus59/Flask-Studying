@@ -4,10 +4,7 @@ from web_project.chatting.socket_test import socketio
 
 if __name__ == '__main__':
     app = create_app()
-    
-    socketio.run(app)
-    #app.run()
-    
+    socketio.run(app, port=5000)
 
 '''
 conda activate FLASK

@@ -9,6 +9,7 @@
                 <p><li><a href = "{{url_for('board.post_detail', id = i._id)}}">{{i.title}}</p></a>
             {% endfor %}
         {% endif %}
+        
     </div>
     {% if g.user %}
         {{ g.user.name }}<br>

@@ -4,14 +4,16 @@ from flask_wtf.csrf import CSRFProtect
 from datetime import timedelta
 #from .chatting.test import *
 from .chatting.socket_test import *
+
+from dotenv import load_dotenv
+load_dotenv()
+
 def create_app():
+    
     app = Flask(__name__, template_folder= "templates")
-    app.config.update(
-    DEBUG=True,
-    PORT = 6000
-    )
     app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
-    app.config.from_pyfile('../config.py')
+    app.config['DEBUG'] = os.environ.get('DEBUG')
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') 
     socketio.init_app(app)
     csrf = CSRFProtect()
     csrf.init_app(app)
